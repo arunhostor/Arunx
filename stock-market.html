@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Market - ARUNX</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-rocket"></i>
+                <a href="index.html" style="color: inherit; text-decoration: none;"><span>ARUNX</span></a>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="stock-market.html" class="active">Markets</a>
+                <a href="news.html">News</a>
+                <a href="resume-builder.html">Resume Builder</a>
+                <a href="auth.html" class="btn-primary">Login</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+        <h1><i class="fas fa-chart-line"></i> Live Stock Market</h1>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="font-size: 0.9rem; color: #6b7280;">NIFTY 50</div>
+                <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">22,148</div>
+                <div style="color: #10b981; font-weight: 600;">▲ +0.85%</div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="font-size: 0.9rem; color: #6b7280;">SENSEX</div>
+                <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">73,142</div>
+                <div style="color: #10b981; font-weight: 600;">▲ +1.12%</div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <div style="font-size: 0.9rem; color: #6b7280;">S&P 500</div>
+                <div style="font-size: 2rem; font-weight: 700; margin: 0.5rem 0;">4,958</div>
+                <div style="color: #10b981; font-weight: 600;">▲ +0.86%</div>
+            </div>
+        </div>
+        <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 2rem 0;">
+            <h2>NIFTY 50 Chart</h2>
+            <canvas id="stockChart" style="max-height: 400px;"></canvas>
+        </div>
+        <p style="text-align: center; color: #6b7280; margin: 2rem 0;">
+            <i class="fas fa-info-circle"></i> Connect real-time API for live market data
+        </p>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+    const ctx = document.getElementById('stockChart');
+    if (ctx) {
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['9:00', '10:00', '11:00', '12:00', '1:00', '2:00', '3:00'],
+                datasets: [{
+                    label: 'NIFTY 50',
+                    data: [21950, 21980, 22020, 22050, 22080, 22120, 22148],
+                    borderColor: '#6366f1',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: { legend: { display: false } }
+            }
+        });
+    }
+    </script>
+</body>
+</html>
