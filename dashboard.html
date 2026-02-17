@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - ARUNX</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">ARUNX</div>
+      <div class="flex gap-2" style="align-items: center; margin-left: auto;">
+        <button class="theme-toggle">🌙</button>
+        <div class="dropdown">
+          <button class="dropdown-toggle">
+            <span class="user-avatar" style="width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">U</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="profile.html" class="dropdown-item">Profile</a>
+            <a href="#" class="dropdown-item logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="sidebar-nav-item">
+            <a href="dashboard.html" class="sidebar-nav-link active">
+              <span class="sidebar-nav-icon">📊</span>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="resume-builder.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📝</span>
+              <span>Resume Builder</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="resume-templates.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">🎨</span>
+              <span>Templates</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="my-resumes.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📄</span>
+              <span>My Resumes</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="career-roadmap.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">🎯</span>
+              <span>Career Roadmap</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="skill-analyzer.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📈</span>
+              <span>Skill Analyzer</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="news.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">📰</span>
+              <span>News</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="blog.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">✍️</span>
+              <span>Blog</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="stocks.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">💹</span>
+              <span>Stocks</span>
+            </a>
+          </li>
+          <li class="sidebar-nav-item">
+            <a href="profile.html" class="sidebar-nav-link">
+              <span class="sidebar-nav-icon">👤</span>
+              <span>Profile</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="dashboard-content">
+      <div class="container" style="max-width: 100%;">
+        <h1 style="margin-bottom: var(--spacing-xl);">Welcome back, <span class="user-name">User</span>! 👋</h1>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon primary">📝</div>
+            <div class="stat-content">
+              <h3 id="resumeCount">0</h3>
+              <p>Resumes Created</p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon success">✅</div>
+            <div class="stat-content">
+              <h3><span id="profileCompletion">0</span>%</h3>
+              <p>Profile Complete</p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon warning">🎯</div>
+            <div class="stat-content">
+              <h3>5</h3>
+              <p>Skills Tracked</p>
+            </div>
+          </div>
+          
+          <div class="stat-card">
+            <div class="stat-icon info">⏱️</div>
+            <div class="stat-content">
+              <h3>12h</h3>
+              <p>Study Time</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="margin-top: var(--spacing-xl);">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Profile Completion</h3>
+            </div>
+            <div class="card-body">
+              <div class="progress" style="margin-bottom: var(--spacing-md);">
+                <div class="progress-bar" id="completionBar" style="width: 0%"></div>
+              </div>
+              <p style="margin-bottom: var(--spacing-md);">Complete your profile to unlock all features</p>
+              <ul style="list-style: none; padding: 0; font-size: 0.875rem;">
+                <li style="margin-bottom: var(--spacing-sm);">✓ Basic information</li>
+                <li style="margin-bottom: var(--spacing-sm);">✓ Contact details</li>
+                <li style="margin-bottom: var(--spacing-sm); color: var(--text-tertiary);">○ Add skills</li>
+                <li style="margin-bottom: var(--spacing-sm); color: var(--text-tertiary);">○ Add experience</li>
+              </ul>
+              <a href="profile.html" class="btn btn-primary btn-sm" style="margin-top: var(--spacing-md);">Complete Profile</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Daily Tip 💡</h3>
+            </div>
+            <div class="card-body">
+              <p style="font-size: 1.125rem; line-height: 1.6;">
+                "Tailor your resume for each job application. Use keywords from the job description to pass through ATS systems."
+              </p>
+              <div style="margin-top: var(--spacing-md); padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
+                <span class="badge badge-primary">Resume Tips</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: var(--spacing-xl);">
+          <div class="card-header">
+            <h3 class="card-title">Quick Actions</h3>
+          </div>
+          <div class="card-body">
+            <div class="action-cards">
+              <a href="resume-builder.html" class="action-card">
+                <div class="action-card-icon">📝</div>
+                <h4>Create Resume</h4>
+                <p>Build a new resume</p>
+              </a>
+              
+              <a href="resume-templates.html" class="action-card">
+                <div class="action-card-icon">🎨</div>
+                <h4>Browse Templates</h4>
+                <p>15 professional designs</p>
+              </a>
+              
+              <a href="career-roadmap.html" class="action-card">
+                <div class="action-card-icon">🎯</div>
+                <h4>Career Roadmap</h4>
+                <p>Plan your path</p>
+              </a>
+              
+              <a href="skill-analyzer.html" class="action-card">
+                <div class="action-card-icon">📈</div>
+                <h4>Analyze Skills</h4>
+                <p>Find skill gaps</p>
+              </a>
+              
+              <a href="news.html" class="action-card">
+                <div class="action-card-icon">📰</div>
+                <h4>Read News</h4>
+                <p>Stay updated</p>
+              </a>
+              
+              <a href="stocks.html" class="action-card">
+                <div class="action-card-icon">💹</div>
+                <h4>Market Insights</h4>
+                <p>Learn investing</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+  <script>
+    document.querySelector('.dropdown-toggle').addEventListener('click', function() {
+      this.parentElement.classList.toggle('active');
+    });
+    
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+      }
+    });
+  </script>
+</body>
+</html>

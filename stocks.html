@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Market Dashboard - ARUNX</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="dashboard.html" class="logo">ARUNX</a>
+      <div class="flex gap-2" style="align-items: center; margin-left: auto;">
+        <button class="theme-toggle">🌙</button>
+        <a href="profile.html" class="btn btn-ghost">Profile</a>
+        <button class="btn btn-outline logout-btn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="dashboard.html" class="sidebar-nav-link"><span>📊</span> Dashboard</a></li>
+          <li><a href="resume-builder.html" class="sidebar-nav-link"><span>📝</span> Resume Builder</a></li>
+          <li><a href="stocks.html" class="sidebar-nav-link active"><span>💹</span> Stocks</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="dashboard-content">
+      <div class="container" style="max-width: 100%;">
+        <h1>Stock Market Dashboard 💹</h1>
+        <p style="margin-bottom: 32px; color: var(--text-secondary);">Track market trends and build your financial literacy</p>
+        
+        <div class="grid grid-4" style="margin-bottom: 32px;">
+          <div class="stat-card">
+            <div class="stat-content">
+              <p style="font-size: 0.875rem; margin-bottom: 4px;">S&P 500</p>
+              <h3 style="color: var(--success);">5,123.45 <span style="font-size: 1rem;">+1.2%</span></h3>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-content">
+              <p style="font-size: 0.875rem; margin-bottom: 4px;">NASDAQ</p>
+              <h3 style="color: var(--success);">16,234.12 <span style="font-size: 1rem;">+0.8%</span></h3>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-content">
+              <p style="font-size: 0.875rem; margin-bottom: 4px;">DOW JONES</p>
+              <h3 style="color: var(--error);">38,567.23 <span style="font-size: 1rem;">-0.3%</span></h3>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-content">
+              <p style="font-size: 0.875rem; margin-bottom: 4px;">VIX</p>
+              <h3>13.45</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2" style="gap: 24px;">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">📈 Top Gainers</h3>
+            </div>
+            <div class="card-body" id="topGainers">
+              <div class="stock-card" style="margin-bottom: 16px;">
+                <div class="stock-header">
+                  <div>
+                    <div class="stock-symbol">AAPL</div>
+                    <div class="stock-name">Apple Inc.</div>
+                  </div>
+                  <div class="stock-change positive">+2.35%</div>
+                </div>
+                <div class="stock-price">$178.52</div>
+              </div>
+              <div class="stock-card">
+                <div class="stock-header">
+                  <div>
+                    <div class="stock-symbol">MSFT</div>
+                    <div class="stock-name">Microsoft</div>
+                  </div>
+                  <div class="stock-change positive">+1.89%</div>
+                </div>
+                <div class="stock-price">$410.23</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">📉 Top Losers</h3>
+            </div>
+            <div class="card-body">
+              <div class="stock-card" style="margin-bottom: 16px;">
+                <div class="stock-header">
+                  <div>
+                    <div class="stock-symbol">TSLA</div>
+                    <div class="stock-name">Tesla Inc.</div>
+                  </div>
+                  <div class="stock-change negative">-2.14%</div>
+                </div>
+                <div class="stock-price">$245.18</div>
+              </div>
+              <div class="stock-card">
+                <div class="stock-header">
+                  <div>
+                    <div class="stock-symbol">NFLX</div>
+                    <div class="stock-name">Netflix</div>
+                  </div>
+                  <div class="stock-change negative">-1.56%</div>
+                </div>
+                <div class="stock-price">$542.67</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top: 24px;">
+          <div class="card-header">
+            <h3 class="card-title">💡 Investing 101</h3>
+          </div>
+          <div class="card-body">
+            <div class="grid grid-3" style="gap: 16px;">
+              <div>
+                <h4 style="margin-bottom: 8px;">Diversification</h4>
+                <p style="font-size: 0.875rem; color: var(--text-secondary);">Don't put all eggs in one basket. Spread investments across different sectors.</p>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 8px;">Long-term Thinking</h4>
+                <p style="font-size: 0.875rem; color: var(--text-secondary);">Time in the market beats timing the market. Stay invested for the long run.</p>
+              </div>
+              <div>
+                <h4 style="margin-bottom: 8px;">Research First</h4>
+                <p style="font-size: 0.875rem; color: var(--text-secondary);">Always research before investing. Understand what you're buying.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/app.js"></script>
+  <script src="../js/stocks.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login / Sign Up - ARUNX</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    .auth-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient-hero);
+      padding: var(--spacing-lg);
+    }
+    
+    .auth-box {
+      background: var(--bg-primary);
+      border-radius: var(--radius-xl);
+      padding: var(--spacing-2xl);
+      max-width: 450px;
+      width: 100%;
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .auth-tabs {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+      border-bottom: 2px solid var(--border-color);
+    }
+    
+    .auth-tab {
+      flex: 1;
+      padding: var(--spacing-md);
+      border: none;
+      background: none;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all var(--transition-fast);
+    }
+    
+    .auth-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+    }
+    
+    .demo-login {
+      background: var(--bg-secondary);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-md);
+      margin-top: var(--spacing-lg);
+      text-align: center;
+      border: 1px solid var(--border-color);
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-box">
+      <div style="text-align: center; margin-bottom: var(--spacing-xl);">
+        <div class="logo" style="font-size: 2rem; margin-bottom: var(--spacing-sm);">ARUNX</div>
+        <p style="color: var(--text-secondary);">Start building your career today</p>
+      </div>
+      
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchTab('login')">Login</button>
+        <button class="auth-tab" onclick="switchTab('register')">Sign Up</button>
+      </div>
+      
+      <!-- Login Form -->
+      <form id="loginForm" class="auth-form active">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="loginEmail" class="form-input" placeholder="your@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);">
+          Login
+        </button>
+        
+        <div class="demo-login">
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: var(--spacing-sm);">
+            Try demo account
+          </p>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="loginDemo()">
+            Login as Demo User
+          </button>
+        </div>
+      </form>
+      
+      <!-- Register Form -->
+      <form id="registerForm" class="auth-form">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" id="registerName" class="form-input" placeholder="John Doe" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="registerEmail" class="form-input" placeholder="your@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="registerPassword" class="form-input" placeholder="At least 6 characters" required>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <input type="password" id="registerConfirmPassword" class="form-input" placeholder="Confirm your password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--spacing-md);">
+          Create Account
+        </button>
+      </form>
+      
+      <div style="text-align: center; margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: 1px solid var(--border-color);">
+        <a href="../index.html" style="color: var(--text-secondary); font-size: 0.875rem;">← Back to Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script>
+    function switchTab(tab) {
+      // Update tab buttons
+      document.querySelectorAll('.auth-tab').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update forms
+      document.querySelectorAll('.auth-form').forEach(form => {
+        form.classList.remove('active');
+      });
+      
+      if (tab === 'login') {
+        document.getElementById('loginForm').classList.add('active');
+      } else {
+        document.getElementById('registerForm').classList.add('active');
+      }
+    }
+    
+    function loginDemo() {
+      // Create demo account if not exists
+      Auth.createDemoAccount();
+      
+      // Login with demo credentials
+      document.getElementById('loginEmail').value = 'demo@arunx.com';
+      document.getElementById('loginPassword').value = 'demo123';
+      
+      // Submit form
+      Auth.login('demo@arunx.com', 'demo123');
+    }
+  </script>
+</body>
+</html>

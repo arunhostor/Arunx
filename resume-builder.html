@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder - ARUNX</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/templates.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-content">
+      <a href="dashboard.html" class="logo">ARUNX</a>
+      <div class="flex gap-3" style="align-items: center; margin-left: auto;">
+        <button class="btn btn-outline btn-sm" onclick="previewResume()">Preview</button>
+        <button class="btn btn-primary btn-sm" onclick="downloadPDF()">Download PDF</button>
+        <button class="btn btn-ghost btn-sm" onclick="saveResume()">Save</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <main class="dashboard-content" style="margin-left: 0; padding: var(--spacing-lg);">
+      <div class="container" style="max-width: 100%;">
+        <h1>Resume Builder</h1>
+        <p style="margin-bottom: var(--spacing-xl); color: var(--text-secondary);">Create your professional resume in minutes</p>
+        
+        <div class="resume-editor">
+          <div class="editor-panel">
+            <div class="editor-section">
+              <div class="section-header">
+                <h3 class="section-title">Template</h3>
+              </div>
+              <select id="templateSelect" class="form-select">
+                <option value="classic">Classic Professional</option>
+                <option value="modern">Modern Minimal</option>
+                <option value="executive">Executive</option>
+                <option value="creative">Creative Bold</option>
+                <option value="two-column">Two Column</option>
+                <option value="minimal">Minimalist White</option>
+                <option value="tech">Tech Stack</option>
+                <option value="colorful">Colorful Accent</option>
+                <option value="timeline">Timeline</option>
+                <option value="grid">Grid Layout</option>
+                <option value="elegant">Elegant Serif</option>
+                <option value="bold">Bold Impact</option>
+                <option value="split">Split Design</option>
+                <option value="compact">Compact Dense</option>
+                <option value="infographic">Infographic Style</option>
+              </select>
+            </div>
+
+            <div class="editor-section">
+              <h3 class="section-title">Personal Information</h3>
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="name" class="form-input" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Professional Title</label>
+                <input type="text" id="title" class="form-input" placeholder="Software Engineer">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" class="form-input" placeholder="john@example.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone</label>
+                <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 123-4567">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Location</label>
+                <input type="text" id="location" class="form-input" placeholder="San Francisco, CA">
+              </div>
+            </div>
+
+            <div class="editor-section">
+              <h3 class="section-title">Summary</h3>
+              <textarea id="summary" class="form-textarea" placeholder="Brief professional summary..."></textarea>
+            </div>
+
+            <div class="editor-section">
+              <div class="section-header">
+                <h3 class="section-title">Skills</h3>
+                <button class="section-actions" onclick="addSkill()">+ Add</button>
+              </div>
+              <div id="skillsList" class="skill-tags"></div>
+              <input type="text" id="newSkill" class="form-input" placeholder="Add a skill..." style="margin-top: 12px;">
+            </div>
+
+            <div class="editor-section">
+              <div class="section-header">
+                <h3 class="section-title">Experience</h3>
+                <button class="section-actions" onclick="addExperience()">+ Add</button>
+              </div>
+              <div id="experienceList"></div>
+            </div>
+          </div>
+
+          <div class="preview-panel">
+            <div id="resumePreview" class="resume-preview resume-classic">
+              <div class="resume-header">
+                <div class="resume-name">Your Name</div>
+                <div class="resume-title">Your Title</div>
+                <div class="resume-contact">
+                  <span>email@example.com</span>
+                  <span>•</span>
+                  <span>(555) 123-4567</span>
+                </div>
+              </div>
+              
+              <div class="resume-section">
+                <div class="resume-section-title">SUMMARY</div>
+                <p class="resume-content">Your professional summary will appear here...</p>
+              </div>
+              
+              <div class="resume-section">
+                <div class="resume-section-title">EXPERIENCE</div>
+                <div class="experience-item">
+                  <div class="item-header">
+                    <div>
+                      <div class="item-title">Job Title</div>
+                      <div class="item-company">Company Name</div>
+                    </div>
+                    <div class="item-date">2020 - Present</div>
+                  </div>
+                  <div class="item-description">Job description and achievements...</div>
+                </div>
+              </div>
+              
+              <div class="resume-section">
+                <div class="resume-section-title">SKILLS</div>
+                <div class="skills-list">
+                  <span class="skill-item">JavaScript</span>
+                  <span class="skill-item">React</span>
+                  <span class="skill-item">Node.js</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/utils.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/resume.js"></script>
+  <script>
+    let resumeData = {
+      template: 'classic',
+      name: '',
+      title: '',
+      email: '',
+      phone: '',
+      location: '',
+      summary: '',
+      skills: [],
+      experience: []
+    };
+
+    function updatePreview() {
+      const preview = document.getElementById('resumePreview');
+      preview.className = 'resume-preview resume-' + resumeData.template;
+      
+      // Update content
+      const name = resumeData.name || 'Your Name';
+      const title = resumeData.title || 'Your Title';
+      const email = resumeData.email || 'email@example.com';
+      const phone = resumeData.phone || '(555) 123-4567';
+      
+      preview.querySelector('.resume-name').textContent = name;
+      preview.querySelector('.resume-title').textContent = title;
+      preview.querySelector('.resume-contact').innerHTML = `
+        <span>${email}</span>
+        <span>•</span>
+        <span>${phone}</span>
+      `;
+      
+      if (resumeData.summary) {
+        preview.querySelector('.resume-content').textContent = resumeData.summary;
+      }
+    }
+
+    document.querySelectorAll('input, textarea, select').forEach(el => {
+      el.addEventListener('input', (e) => {
+        const field = e.target.id;
+        if (field === 'templateSelect') {
+          resumeData.template = e.target.value;
+        } else {
+          resumeData[field] = e.target.value;
+        }
+        updatePreview();
+      });
+    });
+
+    function downloadPDF() {
+      Utils.Toast.info('Opening print dialog...');
+      window.print();
+    }
+
+    function saveResume() {
+      const user = Auth.getCurrentUser();
+      if (!user) return;
+      
+      const resumes = Utils.Storage.get('resumes_' + user.id, []);
+      resumeData.id = Utils.generateId();
+      resumeData.createdAt = new Date().toISOString();
+      resumes.push(resumeData);
+      Utils.Storage.set('resumes_' + user.id, resumes);
+      
+      Utils.Toast.success('Resume saved successfully!');
+    }
+
+    function previewResume() {
+      document.querySelector('.editor-panel').style.display = 'none';
+      document.querySelector('.preview-panel').style.gridColumn = '1 / -1';
+    }
+
+    updatePreview();
+  </script>
+</body>
+</html>
